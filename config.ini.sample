@@ -1,0 +1,20 @@
+[general]
+debug = true
+file = ./private-keys
+
+# Main: https://s1.ripple.com:51234 / Testnet: https://s.altnet.rippletest.net:51234
+api_url = https://s.altnet.rippletest.net:51234
+
+[keys]
+# Number of keys in pool
+num = 3
+
+[db]
+# Set true to disable DB
+# disabled = true
+
+# DB Configuration
+host = 172.17.0.2
+name = mysql
+user = root
+pass = pass
