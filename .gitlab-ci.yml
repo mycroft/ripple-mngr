@@ -11,6 +11,7 @@ build:
     before_script: ~
     script:
         - sed -i -e "s/VERSION_CHANGE_ME/$VERSION/" main.go
+        - go get -d -v
         - go build -o $BUILD_NAME
         - ls -l
         - ./$BUILD_NAME --version
