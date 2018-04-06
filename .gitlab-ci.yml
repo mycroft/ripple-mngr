@@ -1,0 +1,18 @@
+variables:
+    BUILD_NAME: $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME-$CI_PIPELINE_ID
+
+stages:
+    - build
+
+build:
+    stage: build
+    image: golang:1.10.1
+    before_script: ~
+    script:
+        - go build -o $BUILD_NAME
+        - ls -l
+        - ./$BUILD_NAME
+    artifacts:
+        name: $BUILD_NAME
+        paths:
+            - $BUILD_NAME
