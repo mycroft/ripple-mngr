@@ -85,7 +85,7 @@ func Watch(db mysql.Conn) error {
 		pubkey = row.Str(0)
 
 		if fDebug {
-			log.Printf("Looking for key 0x%s\n", pubkey)
+			log.Printf("Looking for key %s\n", pubkey)
 		}
 
 		value, err := QueryBalance(pubkey)
@@ -111,7 +111,7 @@ func Watch(db mysql.Conn) error {
 			}
 
 			if fDebug {
-				log.Printf("Query for TX for 0x%s\n", pubkey)
+				log.Printf("Query for TX for %s\n", pubkey)
 			}
 
 			txs, err := QueryTx(pubkey)
@@ -149,7 +149,7 @@ func ShowStatus(db mysql.Conn) error {
 			started_ts_str = fmt.Sprintf("started_ts:'%s'", row.Str(5))
 		}
 
-		log.Printf("id:%d 0x%s used:%v waited:%d received:%d %s\n", row.Int(0), row.Str(1), row.Bool(2), row.Int(3), row.Int(4), started_ts_str)
+		log.Printf("id:%d %s used:%v waited:%d received:%d %s\n", row.Int(0), row.Str(1), row.Bool(2), row.Int(3), row.Int(4), started_ts_str)
 	}
 
 	return nil
@@ -267,7 +267,6 @@ func main() {
 		if fDebug {
 			log.Printf("Seed: %s\n", seed)
 			log.Printf("Pub: %s\n", address)
-			// log.Printf("Pub:  0x%x\n", hash[12:])
 		}
 
 		if fd != nil {
