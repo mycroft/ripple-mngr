@@ -23,6 +23,7 @@ var (
 	fApiUrl                string
 	fFile                  string
 	fRefresh               bool
+	fVersion               bool
 )
 
 func init() {
@@ -33,6 +34,7 @@ func init() {
 	flag.BoolVar(&fInit, "init", false, "DB Init")
 	flag.BoolVar(&fStatus, "status", false, "Show key statuses")
 	flag.BoolVar(&fRefresh, "refresh", false, "Refresh data from database")
+	flag.BoolVar(&fVersion, "version", false, "Show version")
 }
 
 func HttpQuery(url string) ([]byte, error) {
@@ -161,6 +163,11 @@ func main() {
 	var err error
 
 	flag.Parse()
+
+	if fVersion {
+		fmt.Printf("ripple-mngr VERSION_CHANGE_ME\n")
+		return
+	}
 
 	cfg, err := ini.Load(fConfigFile)
 	if err != nil {
