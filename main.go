@@ -28,7 +28,7 @@ var (
 
 func init() {
 	flag.BoolVar(&fDebug, "debug", false, "Debug mode")
-	flag.StringVar(&fConfigFile, "config", "config.ini", "Configuration file")
+	flag.StringVar(&fConfigFile, "config", "/etc/config.ini", "Configuration file")
 	flag.StringVar(&file, "file", "", "File for export")
 	flag.BoolVar(&fWatch, "watch", false, "Search for transactions for existing addresses")
 	flag.BoolVar(&fInit, "init", false, "DB Init")
@@ -171,7 +171,7 @@ func main() {
 
 	cfg, err := ini.Load(fConfigFile)
 	if err != nil {
-		fmt.Printf("Fail to read file: %v", err)
+		fmt.Printf("Fail to read file: %v\n", err)
 		os.Exit(1)
 	}
 
